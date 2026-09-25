@@ -1,4 +1,6 @@
 ---
+import '/src/pages/styles/global.css';
+
 const pageTitle = "About Me";
 
 const identity = {
@@ -16,6 +18,10 @@ const skills = [
   "Astro",
   "CyberArk (Now called Idira)",
 ];
+
+const skillColor = "crimson";
+const fontWeight = "bold";
+const textCase = "uppercase"
 ---
 
 <html lang="en">
@@ -26,6 +32,13 @@ const skills = [
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
+    <style define:vars={{skillColor, fontWeight, textCase}}>
+      .skill {
+        color: var(--skillColor);
+        font-weight: var(--fontWeight);
+        text-transform: var(--textCase);
+      }
+    </style>
   </head>
   <body>
     <a href="/">Home</a>
@@ -51,7 +64,7 @@ const skills = [
     </ul>
     <p>My skills are:</p>
     <ul>
-      {skills.map((skill) => <li>{skill}</li>)}
+      {skills.map((skill) => <li class="skill">{skill}</li>)}
     </ul>
   </body>
 </html>
